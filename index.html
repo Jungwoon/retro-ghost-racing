@@ -1,9 +1,31 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>👻 RETRO GHOST RACING 👻</title>
+    <title>👻 Retro Ghost Racing - Free Online Multiplayer Racing Game</title>
+    <meta name="description" content="Play Retro Ghost Racing! A free online arcade-style racing game with retro graphics, ghost characters, and multiplayer fun. Race against friends with random names!">
+    <meta name="keywords" content="ghost racing game, retro arcade game, online racing, multiplayer game, free game, browser game, arcade racing">
+    <meta name="author" content="Retro Ghost Racing">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://retro-horse-racing.vercel.app/">
+    <meta property="og:title" content="👻 Retro Ghost Racing - Free Online Racing Game">
+    <meta property="og:description" content="Play the most fun retro arcade racing game! Race with ghost characters and compete with friends!">
+    <meta property="og:image" content="https://retro-horse-racing.vercel.app/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://retro-horse-racing.vercel.app/">
+    <meta property="twitter:title" content="👻 Retro Ghost Racing - Free Online Racing Game">
+    <meta property="twitter:description" content="Play the most fun retro arcade racing game! Race with ghost characters and compete with friends!">
+    <meta property="twitter:image" content="https://retro-horse-racing.vercel.app/og-image.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://retro-horse-racing.vercel.app/">
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-B0E99G0WFC"></script>
     <script>
@@ -15,6 +37,25 @@
     </script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7733659383103857"
      crossorigin="anonymous"></script>
+
+    <!-- Schema.org markup for Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Retro Ghost Racing",
+      "description": "A free online retro arcade racing game with ghost characters",
+      "url": "https://retro-horse-racing.vercel.app/",
+      "applicationCategory": "Game",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -31,7 +72,7 @@
             </div>
 
             <div class="input-container">
-                <label for="playerCount">참가자 수를 선택하세요</label>
+                <label for="playerCount">Select Number of Players</label>
                 <div class="number-selector">
                     <button class="btn-number" onclick="changePlayerCount(-1)">◄</button>
                     <input type="number" id="playerCount" value="4" min="2" max="8" readonly>
@@ -45,8 +86,8 @@
             </div>
 
             <div class="instructions">
-                <p>▲ 최대 8명까지 참가 가능</p>
-                <p>▲ 이름은 자동으로 배정됩니다 👻</p>
+                <p>▲ Up to 8 players</p>
+                <p>▲ Names are randomly assigned 👻</p>
             </div>
         </div>
 

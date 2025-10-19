@@ -1,0 +1,7 @@
+# robots.txt for Retro Ghost Racing
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://retro-horse-racing.vercel.app/sitemap.xml

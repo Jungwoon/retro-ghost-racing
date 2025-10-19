@@ -25,12 +25,12 @@ const colors = [
     '#3a86ff'  // 블루
 ];
 
-// 랜덤 이름 풀
+// Random name pool
 const randomNames = [
-    '사과', '바나나', '포도', '딸기', '수박', '복숭아', '오렌지', '키위',
-    '망고', '체리', '레몬', '자두', '귤', '파인애플', '메론', '배',
-    '감', '밤', '호두', '땅콩', '피자', '치킨', '햄버거', '떡볶이',
-    '김밥', '라면', '짜장', '짬뽕', '탕수육', '족발', '보쌈', '삼겹살'
+    'Shadow', 'Phantom', 'Spirit', 'Specter', 'Wraith', 'Boo', 'Casper', 'Ghost',
+    'Spooky', 'Mystic', 'Twilight', 'Eclipse', 'Lunar', 'Stellar', 'Nova', 'Comet',
+    'Blaze', 'Flash', 'Thunder', 'Lightning', 'Storm', 'Frost', 'Inferno', 'Vortex',
+    'Ninja', 'Samurai', 'Titan', 'Phoenix', 'Dragon', 'Griffin', 'Pegasus', 'Legend'
 ];
 
 // 플레이어 수 변경
