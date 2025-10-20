@@ -71,23 +71,29 @@
                 <div class="subtitle">👻 ARCADE EDITION 👻</div>
             </div>
 
-            <div class="input-container">
-                <label for="playerCount">Select Number of Players</label>
-                <div class="number-selector">
-                    <button class="btn-number" onclick="changePlayerCount(-1)">◄</button>
-                    <input type="number" id="playerCount" value="4" min="2" max="8" readonly>
-                    <button class="btn-number" onclick="changePlayerCount(1)">►</button>
+            <div class="game-setup-wrapper">
+                <div class="input-container">
+                    <label for="playerCount">Select Number of Players</label>
+                    <div class="number-selector">
+                        <button class="btn-number" onclick="changePlayerCount(-1)">◄</button>
+                        <input type="number" id="playerCount" value="4" min="2" max="8" readonly>
+                        <button class="btn-number" onclick="changePlayerCount(1)">►</button>
+                    </div>
+
+                    <button class="btn-start" onclick="startRace()">
+                        <span class="btn-text">START RACE</span>
+                        <span class="btn-glow"></span>
+                    </button>
+
+                    <div class="instructions">
+                        <p>▲ Up to 8 players</p>
+                        <p>▲ Names are randomly assigned 👻</p>
+                    </div>
                 </div>
 
-                <button class="btn-start" onclick="startRace()">
-                    <span class="btn-text">START RACE</span>
-                    <span class="btn-glow"></span>
-                </button>
-            </div>
-
-            <div class="instructions">
-                <p>▲ Up to 8 players</p>
-                <p>▲ Names are randomly assigned 👻</p>
+                <div id="previewPlayers" class="preview-players">
+                    <!-- 동적으로 생성 -->
+                </div>
             </div>
         </div>
 
@@ -104,7 +110,9 @@
 
         <!-- 결과 화면 -->
         <div id="resultScreen" class="screen">
-            <h1 class="title">🏆 RACE RESULTS 🏆</h1>
+            <div class="title-container">
+                <h1 class="title">RACE RESULTS</h1>
+            </div>
 
             <div id="resultList" class="result-list">
                 <!-- 동적으로 생성 -->

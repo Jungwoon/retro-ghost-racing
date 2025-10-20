@@ -108,39 +108,52 @@ body {
 }
 
 .title {
-    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-size: clamp(2.5rem, 7vw, 5rem);
     color: var(--neon-pink);
+    font-weight: bold;
+    letter-spacing: 0.15em;
     text-shadow:
+        0 0 2px #fff,
+        0 0 5px var(--neon-pink),
         0 0 10px var(--neon-pink),
         0 0 20px var(--neon-pink),
-        0 0 30px var(--neon-pink),
-        0 0 40px var(--neon-purple);
+        0 0 35px var(--neon-purple);
     animation: glow 2s ease-in-out infinite alternate;
     margin-bottom: 20px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 @keyframes glow {
     from {
         text-shadow:
+            0 0 2px #fff,
+            0 0 5px var(--neon-pink),
             0 0 10px var(--neon-pink),
             0 0 20px var(--neon-pink),
-            0 0 30px var(--neon-pink),
-            0 0 40px var(--neon-purple);
+            0 0 35px var(--neon-purple);
     }
     to {
         text-shadow:
-            0 0 20px var(--neon-pink),
-            0 0 30px var(--neon-pink),
-            0 0 40px var(--neon-pink),
-            0 0 50px var(--neon-purple),
-            0 0 60px var(--neon-purple);
+            0 0 3px #fff,
+            0 0 8px var(--neon-pink),
+            0 0 15px var(--neon-pink),
+            0 0 25px var(--neon-pink),
+            0 0 40px var(--neon-purple),
+            0 0 50px var(--neon-purple);
     }
 }
 
 .subtitle {
-    font-size: clamp(0.6rem, 1.5vw, 1rem);
+    font-size: clamp(0.9rem, 2.2vw, 1.6rem);
     color: var(--neon-cyan);
-    text-shadow: 0 0 10px var(--neon-cyan);
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    text-shadow:
+        0 0 2px #fff,
+        0 0 5px var(--neon-cyan),
+        0 0 10px var(--neon-cyan),
+        0 0 20px var(--neon-cyan);
     animation: blink 1.5s infinite;
 }
 
@@ -149,14 +162,27 @@ body {
     50%, 99% { opacity: 0.3; }
 }
 
+/* 게임 설정 Wrapper */
+.game-setup-wrapper {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    align-items: stretch;
+}
+
 /* 입력 컨테이너 */
 .input-container {
+    flex: 1;
     background: rgba(131, 56, 236, 0.1);
-    padding: 40px;
-    border: 2px solid var(--neon-purple);
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(131, 56, 236, 0.3);
-    margin-bottom: 30px;
+    padding: 30px;
+    border: 3px solid var(--neon-purple);
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(131, 56, 236, 0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .input-container label {
@@ -202,12 +228,17 @@ body {
     font-family: 'Press Start 2P', cursive;
     font-size: 2rem;
     width: 100px;
-    text-align: center;
+    text-align: center !important;
     background: var(--bg-darker);
     border: 3px solid var(--neon-pink);
     color: var(--neon-pink);
-    padding: 15px;
+    padding: 15px 0;
     box-shadow: 0 0 20px rgba(255, 0, 110, 0.5);
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    appearance: none;
+    text-indent: 0;
+    letter-spacing: 0;
 }
 
 /* 플레이어 이름 입력 */
@@ -250,8 +281,8 @@ body {
 .btn-start {
     position: relative;
     font-family: 'Press Start 2P', cursive;
-    font-size: clamp(0.8rem, 1.5vw, 1.2rem);
-    padding: 20px 50px;
+    font-size: clamp(0.7rem, 1.2vw, 1rem);
+    padding: 18px 40px;
     background: var(--bg-darker);
     border: 3px solid var(--neon-pink);
     color: var(--neon-pink);
@@ -283,9 +314,75 @@ body {
 /* 안내 문구 */
 .instructions {
     text-align: center;
-    font-size: 0.6rem;
+    font-size: 0.55rem;
     color: var(--neon-green);
-    line-height: 2;
+    line-height: 1.8;
+    margin-top: 20px;
+}
+
+/* 플레이어 미리보기 */
+.preview-players {
+    flex: 1;
+    display: flex !important;
+    flex-direction: column;
+    padding: 30px;
+    background: rgba(0, 245, 255, 0.1);
+    border: 3px solid var(--neon-cyan);
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0, 245, 255, 0.4);
+}
+
+.preview-title {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--neon-yellow);
+    font-weight: bold;
+    margin-bottom: 25px;
+    text-shadow:
+        0 0 3px #fff,
+        0 0 10px var(--neon-yellow),
+        0 0 20px var(--neon-yellow);
+    letter-spacing: 0.15em;
+}
+
+.preview-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+}
+
+.preview-item {
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 3px solid;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 0.7rem;
+    animation: fadeIn 0.4s ease-in;
+    box-shadow: 0 0 15px currentColor;
+    transition: all 0.3s;
+}
+
+.preview-item:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 25px currentColor;
+}
+
+.preview-item .player-number {
+    font-size: 0.6rem;
+    opacity: 0.8;
+    margin-bottom: 10px;
+    letter-spacing: 0.05em;
+}
+
+.preview-item .player-name {
+    font-weight: bold;
+    font-size: 0.85rem;
+    text-shadow:
+        0 0 3px #fff,
+        0 0 10px currentColor;
+    letter-spacing: 0.08em;
 }
 
 /* 레이스 화면 */
@@ -294,12 +391,18 @@ body {
 }
 
 .countdown {
-    font-size: 4rem;
+    font-size: 5rem;
     color: var(--neon-yellow);
+    font-weight: bold;
     text-shadow:
+        0 0 3px #fff,
+        0 0 10px var(--neon-yellow),
         0 0 20px var(--neon-yellow),
+        0 0 30px var(--neon-yellow),
         0 0 40px var(--neon-yellow);
     animation: pulse 0.5s ease-in-out;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 @keyframes pulse {
@@ -327,6 +430,22 @@ body {
 }
 
 /* 결과 화면 */
+#resultScreen {
+    align-items: center;
+}
+
+#resultScreen .title-container {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#resultScreen .title {
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+}
+
 .result-list {
     width: 100%;
     max-width: 600px;
@@ -442,7 +561,16 @@ body {
         padding: 10px;
     }
 
+    .game-setup-wrapper {
+        flex-direction: column;
+        gap: 20px;
+    }
+
     .input-container {
+        padding: 20px;
+    }
+
+    .preview-players {
         padding: 20px;
     }
 
@@ -451,11 +579,11 @@ body {
     }
 
     .title {
-        font-size: 1.2rem;
+        font-size: 2rem;
     }
 
     .subtitle {
-        font-size: 0.6rem;
+        font-size: 0.9rem;
     }
 
     .countdown {

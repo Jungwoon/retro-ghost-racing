@@ -3,7 +3,8 @@ let gameState = {
     playerCount: 4,
     players: [],
     raceFinished: false,
-    finishOrder: []
+    finishOrder: [],
+    previewNames: [] // 미리보기 이름 저장
 };
 
 // 캔버스 설정
@@ -41,7 +42,29 @@ function changePlayerCount(delta) {
     if (newValue >= 2 && newValue <= 8) {
         input.value = newValue;
         gameState.playerCount = newValue;
+        updatePlayerPreview();
     }
+}
+
+// 플레이어 미리보기 업데이트
+function updatePlayerPreview() {
+    const previewContainer = document.getElementById('previewPlayers');
+    const names = getRandomNames(gameState.playerCount);
+
+    // 미리보기에서 생성한 이름을 gameState에 저장
+    gameState.previewNames = names;
+
+    previewContainer.innerHTML = `
+        <div class="preview-title">👻 PLAYERS 👻</div>
+        <div class="preview-list">
+            ${names.map((name, index) => `
+                <div class="preview-item" style="border-color: ${colors[index]}; color: ${colors[index]};">
+                    <div class="player-number">Player ${index + 1}</div>
+                    <div class="player-name">${name}</div>
+                </div>
+            `).join('')}
+        </div>
+    `;
 }
 
 // 랜덤 이름 가져오기
@@ -52,8 +75,11 @@ function getRandomNames(count) {
 
 // 레이스 시작
 function startRace() {
-    // 플레이어 정보 수집 (랜덤 이름 자동 배정)
-    const names = getRandomNames(gameState.playerCount);
+    // 미리보기에서 저장한 이름 사용
+    const names = gameState.previewNames.length === gameState.playerCount
+        ? gameState.previewNames
+        : getRandomNames(gameState.playerCount);
+
     gameState.players = [];
 
     for (let i = 0; i < gameState.playerCount; i++) {
@@ -102,7 +128,7 @@ function initCanvas() {
         x: 50,
         y: (canvas.height / gameState.playerCount) * index + (canvas.height / gameState.playerCount) / 2,
         size: 30,
-        baseSpeed: Math.random() * 3 + 0.3 // 0.3 ~ 3.3 사이의 고유 속도 (차이 더 크게)
+        baseSpeed: Math.random() * 4 + 2.5 // 2.5 ~ 6.5 사이의 고유 속도 (10초 이내 완주)
     }));
 }
 
@@ -179,9 +205,9 @@ function animate() {
             allFinished = false;
 
             // 고유 속도 기반 + 약간의 변동
-            // baseSpeed를 중심으로 ±20% 변동 (순위가 더 명확하게)
-            const variation = horse.baseSpeed * 0.4 * (Math.random() - 0.5);
-            horse.speed = horse.baseSpeed + variation;
+            // baseSpeed를 중심으로 ±15% 변동 (순위가 더 명확하게, 최소 속도 보장)
+            const variation = horse.baseSpeed * 0.3 * (Math.random() - 0.5);
+            horse.speed = Math.max(2, horse.baseSpeed + variation); // 최소 속도 2 보장
             horse.x += horse.speed;
 
             // 파티클 생성 (유령 트레일)
@@ -438,4 +464,10 @@ function goHome() {
     raceActive = false;
 
     switchScreen('startScreen');
+    updatePlayerPreview();
 }
+
+// 페이지 로드 시 미리보기 초기화
+window.addEventListener('DOMContentLoaded', () => {
+    updatePlayerPreview();
+});
